@@ -1,0 +1,2 @@
+read prueba
+echo "prueba"
