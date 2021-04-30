@@ -1,4 +1,3 @@
 #!/bin/bash
 
-read prueba
-echo "prueba"
+#JUEGO QUE CREA NUMEROS AEATORIOS, EL USUARIO DEBE INTENTER ADIVINAR EL NUMERO
