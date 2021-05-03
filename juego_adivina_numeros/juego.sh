@@ -5,53 +5,85 @@
 # EL JUGADOR DISPONDRA DE 5 OPCIONES PARA PODER ACERTAR EL NUMERO, EN CADA UNA DE ESTAS OPCIONES SE DIRA SI Y EL NUMERO ES MAYOR O MENOR
 # AL FINAL DE CADA UNA DE LAS JUGADAS SE MOSTRARA EL NUERMO DE VECES JUGADAS, EL NUMERO DE VECES QUE SE HA PERDIDO Y EL NUERMO DE VECES QUE SE HA GANADO
 
+##
 
-# Menu para que el usuario seleccione el modo en el que desea jugar 
+
+##### 	DECLARACION DE VARIABLES DEL MENU ######
+
+primera="muy facil"
+segunda="facil"
+tercera="medio"
+cuarta="elevado"
+quinta="dificil"
+
+
+####    MENU PARA QUE EL USUARIO SELECCIONE EL MODO DE JUEGO
 
 echo "#####################################"
 echo "#                                   #"
 echo "#    SELECCIONE EL MODO DE JUEGO    #"
 echo "#                                   #"
-echo "#      1)  MUY FACIL                #"
-echo "#      2)  FACIL                    #"
-echo "#      3)  MEDIO                    #"
-echo "#      4)  ELEVADO                  #"
-echo "#      5)  DIFICIL                  #"
+echo "#      1)  $primera                #"
+echo "#      2)  $segunda                    #"
+echo "#      3)  $tercera                    #"
+echo "#      4)  $cuarta                  #"
+echo "#      5)  $quinta                  #"
 echo "#                                   #"
 echo "#####################################"
 
-# Control para que el usuario eescoja alguna de las opciones proporcionadas
 
-/*
-#### REVISAR PORQUE NO FUNCIONA ESTO #####
-#if [[ $OpcionUsuario != "muy facil" || $OpcionUsuario != "facil" ]]; then
-#    echo "prueba"
-#fi
-################################################## 
-*/
+#####      CONTROL PARA ASEGURARSE DE QUE EL USUARIO SELECCIONA ALGUNA DE LAS OPCIONES CORRECTAS
+x=0
+while [[ $x -eq 0 ]]
+	do
+		read OpcionUsuario
 
+		case $OpcionUsuario in
+			$primera)
+				echo "Se ha escofigo la primera opción"
+				x=1;;
+			$segunda)
+				echo "Se ha escogido la segunda opción"
+				x=1;;
+			$tercera)
+				echo "Se ha escogido la tercera opcion"
+				x=1;;
+			$cuarta)
+				echo "Se ha escogido la cuarta opcion"
+				x=1;;
+			$quinta)
+				echo "Se ha escogido la quinta opcion"
+				x=1;;
+			*)
+				echo "Se debe de escoger algunas de las opciones indicadas"
+				x=0;;
+		esac
+	done
+
+
+<< COMENTADO     ##  NO CREO QUE SEA LA MEJOR OPCIÓN ##
 x=0
 
-while [[ $x == 0]]
-do
-    read OpcionUsuario
-    if [[ (($OpcionUsuario != "muy facil")) ]]; then
-        x=0 
-        echo "Se debe introducir una opción adecuada y en minusculas"
-    elif [[ (($OpcionUsuario != "facil")) ]]; then
-        x=0 
-        echo "Se debe introducir una opción adecuada y en minusculas"
-    elif [[ (($OpcionUsuario != "medio")) ]];then 
-        x=0 
-        echo "Se debe introducir una opción adecuada y en minusculas"
-    elif  (($OpcionUsuario != "elevado")) ]];
-        x=0 
-        echo "Se debe introducir una opción adecuada y en minusculas"
-    elif  (($OpcionUsuario != "dificil")) ]] ; then
-        x=0 
-        echo "Se debe introducir una opción adecuada y en minusculas""
-    fi
-done
+while [[ $x == 0 ]]
+	do
+    		read OpcionUsuario
+    		if [[ (( $OpcionUsuario != $primera )) ]]; then
+        		x=0 
+        		echo "Se debe introducir una opción adecuada y en minusculas"
+    		elif [[ (($OpcionUsuario != "facil")) ]]; then
+        		x=0 
+        		echo "Se debe introducir una opción adecuada y en minusculas"
+    		elif [[ (($OpcionUsuario != "medio")) ]];then 
+        		x=0 
+        		echo "Se debe introducir una opción adecuada y en minusculas"
+    		elif  [[ (($OpcionUsuario != "elevado")) ]];then
+       			x=0 
+        		echo "Se debe introducir una opción adecuada y en minusculas"
+	    	elif  [[ (($OpcionUsuario != "dificil")) ]] ; then
+        		x=0 
+        		echo "Se debe introducir una opción adecuada y en minusculas"
+	    	fi
+	done
 
-
+COMENTADO
 
