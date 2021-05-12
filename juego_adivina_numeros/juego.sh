@@ -5,11 +5,13 @@
 # EL JUGADOR DISPONDRA DE 5 OPCIONES PARA PODER ACERTAR EL NUMERO, EN CADA UNA DE ESTAS OPCIONES SE DIRA SI Y EL NUMERO ES MAYOR O MENOR
 # AL FINAL DE CADA UNA DE LAS JUGADAS SE MOSTRARA EL NUERMO DE VECES JUGADAS, EL NUMERO DE VECES QUE SE HA PERDIDO Y EL NUERMO DE VECES QUE SE HA GANADO
 
-#### CREACIÓN DE LA FUNCION DE LA PRIMERA OPCION (Se ha de revisar el control de los intentos, no funiona correctamente)
+# SE HA CREADO UN FUNCIÓN POR CADA UNO DE LOS MODOS DE JUEGO
 
-fprimera() {
+
+fprimera() {  #### FUNCION DEL MODO MUY FACIL
 	nmaximo=25 #Numero mas alto posible
 	intentos=0 #Numero de intentos para acertar el numero
+	acierto="no" #Variable para controlar si se ha acertado o no
 
 
 	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al 25"
@@ -33,16 +35,42 @@ fprimera() {
 		elif [[ $nusuario -eq $nacertar ]]; then
 			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
 			intentos=5
+			acierto="si"
 		fi
 
 	done
 	
-		if [[ $intentos -eq 5 ]]; then 
+		if [[ $acierto1 == "no" ]]; then 
 			echo "Se han terminado los intentos"
 
 		fi
 }
 
+fsegunda() {
+
+}
+
+ftercera(){
+
+}
+
+fcuarta(){
+
+}
+
+
+fquinta(){
+
+}
+
+
+
+
+
+#####      CONTROL PARA ASEGURARSE DE QUE EL USUARIO SELECCIONA ALGUNA DE LAS OPCIONES CORRECTAS Y VECES QUE DESEA SEGUIR JUGANDO
+i=0
+while [[ $i -eq 0  ]] #####    BUCLE PARA QUE EL JUEGO SE PUEDA SEGUIR JUGANDO HASTA QUE EL USUARIO QUIERA
+do
 
 ##### 	DECLARACION DE VARIABLES DEL MENU ######
 
@@ -52,49 +80,65 @@ tercera="medio"
 cuarta="elevado"
 quinta="dificil"
 
+####    BUCLE PARA QUE EL USUARIO SELECCIONE EL MODO DE JUEGO
 
-####    MENU PARA QUE EL USUARIO SELECCIONE EL MODO DE JUEGO
+	x=0 
+	while [[ $x -eq 0 ]]
+		do
 
-echo "#####################################"
-echo "#                                   #"
-echo "#    SELECCIONE EL MODO DE JUEGO    #"
-echo "#                                   #"
-echo "#      1)  ${primera^^}                #"
-echo "#      2)  ${segunda^^}                    #"
-echo "#      3)  ${tercera^^}                    #"
-echo "#      4)  ${cuarta^^}                  #"
-echo "#      5)  ${quinta^^}                  #"
-echo "#                                   #"
-echo "#####################################"
+##### MENU CON TODAS LAS OPCIONES DEL JUEGO
 
+			echo "#####################################"
+			echo "#                                   #"
+			echo "#    SELECCIONE EL MODO DE JUEGO    #"
+			echo "#                                   #"
+			echo "#      1)  ${primera^^}                #"
+			echo "#      2)  ${segunda^^}                    #"
+			echo "#      3)  ${tercera^^}                    #"
+			echo "#      4)  ${cuarta^^}                  #"
+			echo "#      5)  ${quinta^^}                  #"
+			echo "#                                   #"
+			echo "#####################################"
+	
+			read OpcionUsuario #Variable con el modo de juego
 
-#####      CONTROL PARA ASEGURARSE DE QUE EL USUARIO SELECCIONA ALGUNA DE LAS OPCIONES CORRECTAS
-x=0
-while [[ $x -eq 0 ]]
-	do
-		read OpcionUsuario
+			case ${OpcionUsuario,,} in
+				$primera)
+					fprimera
+					x=1;;
+				$segunda)
+					fsegunda
+					x=1;;
+				$tercera)
+					ftercera
+					x=1;;
+				$cuarta)
+					fcuarta
+					x=1;;
+				$quinta)
+					fquinta
+					x=1;;
+				*)
+					echo "Se debe de escoger algunas de las opciones indicadas"
+					x=0;;
+			esac
+	
+			echo "¿Desea Jugar de nuevo (S/N)?"
+			read seguirjugando #El usuario dice si quiere jugar de nuevo
 
-		case ${OpcionUsuario,,} in
-			$primera)
-				fprimera
-				x=1;;
-			$segunda)
-				fprimera
-				x=1;;
-			$tercera)
-				echo "Se ha escogido la tercera opcion"
-				x=1;;
-			$cuarta)
-				echo "Se ha escogido la cuarta opcion"
-				x=1;;
-			$quinta)
-				echo "Se ha escogido la quinta opcion"
-				x=1;;
-			*)
-				echo "Se debe de escoger algunas de las opciones indicadas"
-				x=0;;
-		esac
-	done
+			case ${seguirjugando^^} in
+				S) echo "Comenzar de nuevo"
+					x=0 i=0;;
+				N) echo "dejar de jugar"
+					x=1 i=1;;
+				*) echo "Se ha de introducir una respuesta correcta"
+					i=0;;
+			esac
+
+		done
+	echo $acierto
+done
+
 
 
 
