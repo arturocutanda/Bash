@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # JUEGO QUE CREA NUMEROS AEATORIOS, EL USUARIO DEBE INTENTER ADIVINAR EL NUMERO. 
-# SE DARAN 4 OPCIONES DE JUEGO A CADA CUAL MAS DIFICIL DEL 0 AL 25, DEL 0 AL 25, DEL 0 AL 75 Y DEL 0 AL 100
+# SE DARAN 4 OPCIONES DE JUEGO A CADA CUAL MAS DIFICIL DEL 0 AL 25, DEL 0 AL 50, DEL 0 AL 75 Y DEL 0 AL 100
 # EL JUGADOR DISPONDRA DE 5 OPCIONES PARA PODER ACERTAR EL NUMERO, EN CADA UNA DE ESTAS OPCIONES SE DIRA SI Y EL NUMERO ES MAYOR O MENOR
 # AL FINAL DE CADA UNA DE LAS JUGADAS SE MOSTRARA EL NUERMO DE VECES JUGADAS, EL NUMERO DE VECES QUE SE HA PERDIDO Y EL NUERMO DE VECES QUE SE HA GANADO
 
@@ -11,10 +11,10 @@
 fprimera() {  #### FUNCION DEL MODO MUY FACIL
 	nmaximo=25 #Numero mas alto posible
 	intentos=0 #Numero de intentos para acertar el numero
-	acierto="no" #Variable para controlar si se ha acertado o no
+	acierto1="no" #Variable para controlar si se ha acertado o no
 
 
-	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al 25"
+	echo "Se ha iniciado el modo myt facil, el numero ha acertar esta entre el 0 y al $nmaximo"
 
 	nacertar=$((RANDOM%25)) #Numero que el usuario debe acertar
 	echo $nacertar
@@ -28,14 +28,14 @@ fprimera() {  #### FUNCION DEL MODO MUY FACIL
 			echo "El numero que estoy pensado en mayor que $nusuario"
 			intentos=$(($intentos+1))
 		elif [[ $nusuario -gt $nmaximo ]];then
-			echo "Recuerda que el rango es de 0 al 25, está no te la cuento"
+			echo "Recuerda que el rango es de 0 al $nmaximo, esta no te la cuento"
 		elif [[ $nusuario -gt $nacertar ]];then
 			echo "El numero que estoy pensado en menor que $nusuario"
 			intentos=$(($intentos+1))
 		elif [[ $nusuario -eq $nacertar ]]; then
 			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
 			intentos=5
-			acierto="si"
+			acierto1="si"
 		fi
 
 	done
@@ -46,26 +46,157 @@ fprimera() {  #### FUNCION DEL MODO MUY FACIL
 		fi
 }
 
-fsegunda() {
+fsegunda() {    #### FUNCION DEL MODO FACIL
 
+	nmaximo=50 #Numero mas alto posible
+	intentos=0 #Numero de intentos para acertar el numero
+	acierto2="no" #Variable para controlar si se ha acertado o no
+
+
+	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al $nmaximo"
+
+	nacertar=$((RANDOM%50)) #Numero que el usuario debe acertar
+	echo $nacertar
+	echo "¿Cual crees el numero que estoy pensado?"
+
+	while [[ $intentos -lt 5 ]]
+	do
+		read nusuario #Numero que propone el usuario
+
+		if [[ $nusuario -lt $nacertar ]]; then
+			echo "El numero que estoy pensado en mayor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -gt $nmaximo ]];then
+			echo "Recuerda que el rango es de 0 al $nmaximo, esta no te la cuento"
+		elif [[ $nusuario -gt $nacertar ]];then
+			echo "El numero que estoy pensado en menor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -eq $nacertar ]]; then
+			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
+			intentos=5
+			acierto2="si"
+		fi
+
+	done
+	
+		if [[ $acierto2 == "no" ]]; then 
+			echo "Se han terminado los intentos"
+		fi
 }
 
-ftercera(){
+ftercera(){   #### FUNCION DEL MODO MEDIO
 
+	nmaximo=75 #Numero mas alto posible
+	intentos=0 #Numero de intentos para acertar el numero
+	acierto3="no" #Variable para controlar si se ha acertado o no
+
+
+	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al $nmaximo"
+
+	nacertar=$((RANDOM%75)) #Numero que el usuario debe acertar
+	echo $nacertar
+	echo "¿Cual crees el numero que estoy pensado?"
+
+	while [[ $intentos -lt 5 ]]
+	do
+		read nusuario #Numero que propone el usuario
+
+		if [[ $nusuario -lt $nacertar ]]; then
+			echo "El numero que estoy pensado en mayor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -gt $nmaximo ]];then
+			echo "Recuerda que el rango es de 0 al $nmaximo, esta no te la cuento"
+		elif [[ $nusuario -gt $nacertar ]];then
+			echo "El numero que estoy pensado en menor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -eq $nacertar ]]; then
+			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
+			intentos=5
+			acierto3="si"
+		fi
+
+	done
+	
+		if [[ $acierto3 == "no" ]]; then 
+			echo "Se han terminado los intentos"
+		fi
 }
 
-fcuarta(){
+fcuarta(){   #### FUNCION DEL MODO ELEVADO
 
+	nmaximo=100 #Numero mas alto posible
+	intentos=0 #Numero de intentos para acertar el numero
+	acierto4="no" #Variable para controlar si se ha acertado o no
+
+
+	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al $nmaximo"
+
+	nacertar=$((RANDOM%25)) #Numero que el usuario debe acertar
+	echo $nacertar
+	echo "¿Cual crees el numero que estoy pensado?"
+
+	while [[ $intentos -lt 5 ]]
+	do
+		read nusuario #Numero que propone el usuario
+
+		if [[ $nusuario -lt $nacertar ]]; then
+			echo "El numero que estoy pensado en mayor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -gt $nmaximo ]];then
+			echo "Recuerda que el rango es de 0 al $nmaximo, esta no te la cuento"
+		elif [[ $nusuario -gt $nacertar ]];then
+			echo "El numero que estoy pensado en menor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -eq $nacertar ]]; then
+			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
+			intentos=5
+			acierto4="si"
+		fi
+
+	done
+	
+		if [[ $acierto4 == "no" ]]; then 
+			echo "Se han terminado los intentos"
+		fi
 }
 
+fquinta(){    #### FUNCION DEL MODO DIFICIL
 
-fquinta(){
+	nmaximo=125 #Numero mas alto posible
+	intentos=0 #Numero de intentos para acertar el numero
+	acierto5="no" #Variable para controlar si se ha acertado o no
 
+
+	echo "Se ha iniciado el modo facil, el numero ha acertar esta entre el 0 y al $nmaximo"
+
+	nacertar=$((RANDOM%125)) #Numero que el usuario debe acertar
+	echo $nacertar
+	echo "¿Cual crees el numero que estoy pensado?"
+
+	while [[ $intentos -lt 5 ]]
+	do
+		read nusuario #Numero que propone el usuario
+
+		if [[ $nusuario -lt $nacertar ]]; then
+			echo "El numero que estoy pensado en mayor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -gt $nmaximo ]];then
+			echo "Recuerda que el rango es de 0 al $nmaximo, esta no te la cuento"
+		elif [[ $nusuario -gt $nacertar ]];then
+			echo "El numero que estoy pensado en menor que $nusuario"
+			intentos=$(($intentos+1))
+		elif [[ $nusuario -eq $nacertar ]]; then
+			echo "ENHORABUENA!! Has acertado el numero que estoy pensado"
+			intentos=5
+			acierto5="si"
+		fi
+
+	done
+	
+		if [[ $acierto5 == "no" ]]; then 
+			echo "Se han terminado los intentos"
+		fi
 }
-
-
-
-
 
 #####      CONTROL PARA ASEGURARSE DE QUE EL USUARIO SELECCIONA ALGUNA DE LAS OPCIONES CORRECTAS Y VECES QUE DESEA SEGUIR JUGANDO
 i=0
@@ -122,7 +253,9 @@ quinta="dificil"
 					echo "Se debe de escoger algunas de las opciones indicadas"
 					x=0;;
 			esac
-	
+
+##### BUCLE PARA SOLICITAR SEGUIR JUGANDO O CERRAR EL JUEGO
+
 			echo "¿Desea Jugar de nuevo (S/N)?"
 			read seguirjugando #El usuario dice si quiere jugar de nuevo
 
